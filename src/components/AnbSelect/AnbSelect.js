@@ -4,7 +4,7 @@ import axios from 'axios';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-const API_URL = "http://api.anbtech.net:8080/api/api";
+const API_URL = "http://api.anbtech.net/api";
 
 const propTypes = {
  datas : PropTypes.array,

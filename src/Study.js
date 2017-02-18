@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import 'whatwg-fetch';
 
-const API_URL = "http://api.anbtech.net:8080/api/api";
+const API_URL = "http://api.anbtech.net/api";
 
 export default class Study extends Component {
 

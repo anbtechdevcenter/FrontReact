@@ -13,7 +13,7 @@ import AboutDetail from './AboutDetail';
 
 import 'whatwg-fetch';
 
-const API_URL = "http://api.anbtech.net:8080/api/api";
+const API_URL = "http://api.anbtech.net/api";
 
 export default class About extends Component {
     constructor(props){
