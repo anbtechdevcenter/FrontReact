@@ -1,8 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-
-import 'whatwg-fetch';
-
-const API_URL = "http://api.anbtech.net/api";
+import {AnbUtil} from './components';
 
 export default class Study extends Component {
 
@@ -19,85 +16,11 @@ constructor(props){
   this.handleDelete = this.handleDelete.bind(this);
 }
 
-
-ANBREST = (obj , callfn) => {
-
-  this.setState({
-    status : 'loading'
-  });
-
-  let cType = obj.type;
-  let url = obj.url;
-  let param = obj.param;
-
-  switch (cType) {
-    case "R":
-
-      fetch(API_URL+url)
-      .then((response)=>response.json())
-      .then((responseData)=>{
-      //  console.log("[rData] : ", responseData);
-        callfn(responseData);
-        this.setState({status : 'hide'});
-      })
-      .catch(function(ex){
-        console.error(url+" 조회가 실패하였습니다. ", ex);
-        this.setState({status : 'hide'});
-      });
-
-      break;
-
-    case "C" :
-
-      fetch(url,{
-        method : 'post',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body : param
-        })
-        .then((response) => {
-          //this.getApiData();
-      //    console.log('saved successfully', response);
-          if(response.ok){
-            callfn();
-            this.setState({status : 'hide'});
-          }
-        })
-        .catch(function(ex){
-          console.error(url+" 저장이 실패하였습니다. ", ex);
-          this.setState({status : 'hide'});
-        });
-
-      break;
-
-    case "D" :
-      fetch(url, {
-        method : 'delete'
-      })
-      .then((response)=>{
-        callfn();
-        this.setState({status : 'hide'});
-        //console.log('deleted successfully');
-      })
-      .catch(function(ex){
-        console.error(url+" 저장이 실패하였습니다. ", ex);
-        this.setState({status : 'hide'});
-      });
-      break;
-
-    default:
-
-  }
-
-};
-
 /**
 * 게시판 조회
 */
 getApiData() {
-  this.ANBREST({type : "R", url : "/board" }, (res)=>{
+  AnbUtil.REST({type : "R", url : "/board" }, (res)=>{
     this.setState({
       contacts : res
     })
@@ -107,16 +30,15 @@ getApiData() {
 }
 
   handleUserInput(e){
-    //console.log("[searchTerm] ", e.target.value);
     this.setState({filterText:e.target.value})
   }
 
   handleDelete(){
 
     var seqBoard = this.state.dataKey;
-    let url = API_URL+'/board/'+seqBoard;
+    let url = '/board/'+seqBoard;
 
-    this.ANBREST({type:"D", url : url}, ()=>{
+    AnbUtil.REST({type:"D", url : url}, ()=>{
       this.getApiData();
     });
   }
@@ -128,22 +50,19 @@ getApiData() {
       this.setState({
         dataKey : e.target.value
       });
-    //  console.log(">> ", e.target.value, this.state.dataKey);
     }
 
   }
 
 // npm install --save whatwg-fetch
   componentDidMount(){
-    let url = API_URL+'/board';
-    fetch(url)
-      .then((response)=>response.json())
-      .then((responseData)=>{
-        //console.log(" >> ", responseData);
-        this.setState({
-          contacts : responseData
-        });
+    let url = '/board';
+    AnbUtil.REST({type:'R', url: url}, (res)=>{
+      this.setState({
+        contacts : res
       });
+    });
+
   }
 
   render(){
