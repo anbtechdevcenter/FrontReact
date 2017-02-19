@@ -29,7 +29,7 @@ export default class AnbUtil  extends Component{
 
       case "C" :
 
-        fetch(url,{
+        fetch(API_URL+url,{
           method : 'post',
           headers: {
             'Accept': 'application/json',
@@ -51,7 +51,7 @@ export default class AnbUtil  extends Component{
         break;
 
       case "D" :
-        fetch(url, {
+        fetch(API_URL+url, {
           method : 'delete'
         })
         .then((response)=>{

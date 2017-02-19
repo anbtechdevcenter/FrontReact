@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {AnbUtil} from '../../components';
 
 import { Dimmer, Loader } from 'semantic-ui-react';
@@ -11,6 +11,7 @@ constructor(props){
   super(props);
   this.state = {
     filterText : '',
+    filterContent : '',
     contacts : [],
     status : 0,
     dataKey : '',
@@ -20,6 +21,7 @@ constructor(props){
   this.handleCheck = this.handleCheck.bind(this);
   this.handleDelete = this.handleDelete.bind(this);
   this.handleFind = this.handleFind.bind(this);
+  this.handleSave = this.handleSave.bind(this);
 }
 
 /**
@@ -37,18 +39,25 @@ getApiData() {
     this.setState({filterText:e.target.value})
   }
 
-  handleDelete(){
+  onContentChange(e){
+  //  console.log(" handle >> ", e.target.value);
+    this.setState({filterContent:e.target.value})
+  }
 
+  handleDelete(){
     var seqBoard = this.state.dataKey;
     let url = '/board/'+seqBoard;
-
+//console.log(">> " ,seqBoard);
     AnbUtil.REST({type:"D", url : url}, ()=>{
       this.getApiData();
     });
   }
 
   handleCheck(e){
-    console.log(" check ");
+    //console.log(" check ", e.target.value);
+    this.setState({
+      dataKey : e.target.value
+    });
   }
 
  /**
@@ -63,6 +72,15 @@ getApiData() {
         contacts : res,
         active : false
       });
+    });
+  }
+
+
+  handleSave(){
+    console.log("Title ", this.state.filterText);
+    var obj = { 'type' : 'C', 'url':'/board', 'param': JSON.stringify({'boardTitle' : this.state.filterText, 'boardContents' : this.state.filterContent})};
+    AnbUtil.REST(obj, (res)=>{
+      console.log("save");
     });
   }
 
@@ -98,7 +116,10 @@ getApiData() {
       <div className="ui form">
         <div className="field">
           <SearchBar filterText={this.state.filterText}
-          onUserInput={this.handleUserInput.bind(this)}/>
+          filterContent={this.state.filterContent}
+          onUserInput={this.handleUserInput.bind(this)}
+          onContentChange={this.onContentChange.bind(this)}
+          />
         </div>
 
         <div className="field">
@@ -106,7 +127,8 @@ getApiData() {
             onClick={this.handleFind}>
             조회
           </button>
-          <button className="ui olive button">
+          <button className="ui olive button"
+            onClick={this.handleSave}>
             저장
           </button>
           <button className="ui red basic button"

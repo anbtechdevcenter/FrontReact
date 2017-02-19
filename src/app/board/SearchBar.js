@@ -7,6 +7,10 @@ export default  class SearchBar extends Component {
     this.props.onUserInput(value)
   }
 
+  handleContent(value){
+    this.props.onContentChange(value);
+  }
+
 
 
   render(){
@@ -22,6 +26,8 @@ export default  class SearchBar extends Component {
       <div className="field">
           <label>내용</label>
           <input type="text"  placeholder='내용'
+            value={this.props.filterContent}
+            onChange={this.handleContent.bind(this)}
             />
       </div>
 
