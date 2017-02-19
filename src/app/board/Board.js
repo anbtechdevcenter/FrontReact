@@ -49,7 +49,7 @@ getApiData() {
     let url = '/board/'+seqBoard;
 //console.log(">> " ,seqBoard);
     AnbUtil.REST({type:"D", url : url}, ()=>{
-      this.getApiData();
+      this.handleFind();
     });
   }
 
@@ -65,14 +65,19 @@ getApiData() {
  */
   handleFind(){
     this.setState({active : true});
-    let url = '/board';
-    AnbUtil.REST({type:'R', url: url}, (res)=>{
-      //  console.log(" >> " , res);
-      this.setState({
-        contacts : res,
-        active : false
+    setTimeout(()=>{
+      let url = '/board';
+      AnbUtil.REST({type:'R', url: url}, (res)=>{
+        //  console.log(" >> " , res);
+        this.setState({
+          contacts : res,
+          filterText : '',
+          filterContent : '',
+          active : false
+        });
       });
-    });
+    }, 1000);
+
   }
 
 
@@ -80,7 +85,8 @@ getApiData() {
     console.log("Title ", this.state.filterText);
     var obj = { 'type' : 'C', 'url':'/board', 'param': JSON.stringify({'boardTitle' : this.state.filterText, 'boardContents' : this.state.filterContent})};
     AnbUtil.REST(obj, (res)=>{
-      console.log("save");
+      //console.log("save");
+      this.handleFind();
     });
   }
 

@@ -6,7 +6,7 @@ import ContactItem from './ContactItem';
 export default class ContactList extends Component {
   render(){
     let filteredContacts = this.props.contacts.filter(
-      (contact) => contact.boardTitle.indexOf(this.props.filterText) !== -1
+      (contact) =>  contact//contact.boardTitle.indexOf(this.props.filterText) !== -1
     );
     return(
 <div>
