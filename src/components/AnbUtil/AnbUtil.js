@@ -1,8 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React,{ Component } from 'react';
+
 
 const API_URL = "http://api.anbtech.net/api";
 
 export default class AnbUtil  extends Component{
+
+
 
   static REST(obj , callfn){
     let cType = obj.type;
@@ -62,6 +65,16 @@ export default class AnbUtil  extends Component{
     }
     return this;
   }
+
+render(){
+  return(
+    <div>
+
+
+
+    </div>
+  );
+}
 
 
 };

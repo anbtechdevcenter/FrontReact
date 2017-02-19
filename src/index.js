@@ -9,7 +9,7 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import Home from './Home';
 import About from './About';
 import Articles from './Articles';
-import Study from './Study';
+import Study from './app/board/Board';
 
 ReactDOM.render(
   <Router history={browserHistory}>
