@@ -25,8 +25,6 @@ getApiData() {
       contacts : res
     })
   });
-
-
 }
 
   handleUserInput(e){
