@@ -80,7 +80,7 @@ getApiData() {
           active : false
         });
       });
-    }, 1000);
+    }, 300);
 
   }
 
