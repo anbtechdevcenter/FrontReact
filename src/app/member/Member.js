@@ -10,7 +10,7 @@ const defaultProps = {
 
 };
 
-// test 1
+// test 12
 class Member extends Component {
 
     constructor(props) {
