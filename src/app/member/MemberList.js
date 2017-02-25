@@ -10,6 +10,7 @@ const defaultProps = {
 
 };
 
+// 1
 class MemberList extends Component {
 
     constructor(props) {

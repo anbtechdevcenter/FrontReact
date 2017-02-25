@@ -10,6 +10,7 @@ import { Dimmer, Loader } from 'semantic-ui-react';
 
 injectTapEventPlugin();
 
+// 1
 class App extends Component {
 
   state = {

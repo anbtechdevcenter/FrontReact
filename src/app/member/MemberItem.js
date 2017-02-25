@@ -8,6 +8,7 @@ const defaultProps = {
 
 };
 
+// 1
 class MemberItem extends Component {
 
     constructor(props) {

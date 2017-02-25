@@ -11,6 +11,7 @@ import About from './About';
 import Study from './app/board/Board';
 import Member from './app/member/Member';
 
+// 1
 ReactDOM.render(
   <Router history={browserHistory}>
       <Route path="/" component={App}>

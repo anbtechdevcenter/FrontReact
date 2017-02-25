@@ -14,7 +14,7 @@ const defaultProps = {
 };
 */
 
-// 직원관리 컴포넌트 1
+// 직원관리 컴포넌트 11
 class Member extends Component {
 
     constructor(props) {
