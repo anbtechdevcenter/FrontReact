@@ -36,7 +36,8 @@ class MemberList extends Component {
 
                 <tbody>
                   {filteredContacts.map(
-                    (member, i) => <MemberItem key={member.empId}
+                    (member, i) =>
+                    <MemberItem key={member.empId}
                                             dataKey={member.empId}
                                             rowIndex={i+1}
                                             member={member}
