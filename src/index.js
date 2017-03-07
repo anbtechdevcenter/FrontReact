@@ -10,6 +10,7 @@ import Home from './Home';
 import About from './About';
 import Study from './app/board/Board';
 import Member from './app/member/Member';
+import MemberCreat from './app/member/MemberCreat';
 
 // 1
 ReactDOM.render(
@@ -18,6 +19,7 @@ ReactDOM.render(
          <IndexRoute component={Member} />
          <Route path="home" component={Home} />
          <Route path="about" component={About} />
+         <Route path="memberC" component={MemberCreat} />
          <Route path="member" component={Member} />
          <Route path="study" component={Study} />
       </Route>
