@@ -1,19 +1,7 @@
-import React, { Component, PropTypes } from 'react';
-
-const propTypes = {
-
-};
-
-const defaultProps = {
-
-};
+import React, { Component } from 'react';
 
 // 1
 class MemberItem extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return(
@@ -29,8 +17,5 @@ class MemberItem extends Component {
         );
     }
 }
-
-MemberItem.propTypes = propTypes;
-MemberItem.defaultProps = defaultProps;
 
 export default MemberItem;

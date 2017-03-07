@@ -1,21 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import MemberItem from './MemberItem';
 
-
-const propTypes = {
-
-};
-
-const defaultProps = {
-
-};
-
-// 1
 class MemberList extends Component {
 
-    constructor(props) {
-        super(props);
-    }
 
     render() {
       let filteredContacts = this.props.memberlist.filter(
@@ -52,7 +39,5 @@ class MemberList extends Component {
     }
 }
 
-MemberList.propTypes = propTypes;
-MemberList.defaultProps = defaultProps;
 
 export default MemberList;
