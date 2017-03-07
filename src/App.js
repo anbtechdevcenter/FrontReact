@@ -30,10 +30,9 @@ class App extends Component {
       <div className="App">
 
 <ul className="nav nav-pills">
-  <li role="presentation"><Link to="meal">식권관리</Link></li>
-  <li role="presentation"><Link to="about">MeterialUi Sample</Link></li>
-  <li role="presentation"><Link to="memberC">직원등록</Link></li>
-  <li role="presentation"><Link to="member">직원관리</Link></li>
+  <li role="presentation"><Link to="login">로그인</Link></li>
+  <li role="presentation"><Link to="meal">식권신청</Link></li>
+  <li role="presentation"><Link to="mealList">식권현황</Link></li>
   <li role="presentation"><Link to="study">게시판</Link></li>
 </ul>
 

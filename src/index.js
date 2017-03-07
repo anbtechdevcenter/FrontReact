@@ -8,18 +8,19 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 import About from './About';
+import Login from './app/Login';
 import Study from './app/board/Board';
-import Member from './app/member/Member';
 import Meal from './app/meal/Meal';
+import MealList from './app/meal/MealList';
 
 // 1
 ReactDOM.render(
   <Router history={browserHistory}>
       <Route path="/" component={App}>
-         <IndexRoute component={Meal} />
+         <IndexRoute component={Login} />
+         <Route path="login" component={Login} />
          <Route path="meal" component={Meal} />
-         <Route path="about" component={About} />
-         <Route path="member" component={Member} />
+         <Route path="mealList" component={MealList} />
          <Route path="study" component={Study} />
       </Route>
    </Router>, document.getElementById('root')
