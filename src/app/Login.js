@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 
 
 class Login extends Component {
-
+/*
     constructor(props) {
         super(props);
     }
+*/
 
     render() {
         return(
@@ -36,7 +37,7 @@ class Login extends Component {
               <div className="ui cards">
                 <div className="card">
                   <div className="content">
-                    <img className="right floated mini ui image" src="/images/project-1.jpg"/>
+                    <img className="right floated mini ui image" role="presentation" src="/images/project-1.jpg"/>
                     <div className="header">
                       Seo Jeong Hwan
                     </div>

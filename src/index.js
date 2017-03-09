@@ -7,7 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
-import About from './About';
+
 import Login from './app/Login';
 import Study from './app/board/Board';
 import Meal from './app/meal/Meal';
