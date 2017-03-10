@@ -1,7 +1,7 @@
 import React,{ Component } from 'react';
 
 
-const API_URL = "http://api.anbtech.net/api";
+const API_URL = "http://api.anbtech.net:8080/api";
 
 export default class AnbUtil  extends Component{
 
