@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
+import {Modal,Button} from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
@@ -25,15 +26,28 @@ class Meal extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleHide= this.handleHide.bind(this);
   }
 
   handleChange(date) {
     this.setState({
-      startDate: date
+      startDate: date,
+      mhide : false
     });
   }
 
+ handleHide(){
+   console.log(" >> ");
+ }
+
   handleClick(){
+
+ this.setState({
+   mhide : true
+ });
+
+return false;
+
     var selDate = this.state.startDate.format();
 
     var meal = {
@@ -93,7 +107,27 @@ class Meal extends Component {
                   </div>
 
                   <button className="ui button" type="button" onClick={this.handleClick}>식권신청</button>
+
+                    <Modal show={this.state.mhide}>
+                          <Modal.Header>
+                            <Modal.Title>Modal title</Modal.Title>
+                          </Modal.Header>
+
+                          <Modal.Body>
+                            One fine body...
+                          </Modal.Body>
+
+                          <Modal.Footer>
+                            <Button onClick={this.onHide}>Close</Button>
+                            <Button bsStyle="primary">Save changes</Button>
+                          </Modal.Footer>
+
+                        </Modal>
+
                 </form>
+
+
+
             </div>
         );
     }

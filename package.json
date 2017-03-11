@@ -13,7 +13,7 @@
     "pushstate-server": "^2.1.0",
     "react": "^15.4.2",
     "react-addons-update": "^15.4.2",
-    "react-bootstrap": "^0.30.7",
+    "react-bootstrap": "^0.30.8",
     "react-bootstrap-select": "^0.14.0",
     "react-datepicker": "^0.41.1",
     "react-dom": "^15.4.2",
