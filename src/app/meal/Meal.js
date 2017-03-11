@@ -1,11 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 
-import {Modal,Button} from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
-import {AnbUtil} from '../../components';
-
+import {AnbUtil, AnbModal} from '../../components';
 
 const propTypes = {
   member : PropTypes.array
@@ -19,7 +17,8 @@ class Meal extends Component {
   constructor(props){
     super(props);
     this.state= {
-      startDate : moment()
+      startDate : moment(),
+      modalClose : false
     }
 
     moment.locale('ko');
@@ -27,24 +26,28 @@ class Meal extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleHide= this.handleHide.bind(this);
+    this.handleModalClose = this.handleModalClose.bind(this);
   }
 
   handleChange(date) {
     this.setState({
       startDate: date,
-      mhide : false
+      modalClose : false
     });
   }
 
  handleHide(){
    console.log(" >> ");
+   this.setState({
+     modalClose : false
+   });
  }
 
   handleClick(){
 
- this.setState({
-   mhide : true
- });
+    this.setState({
+      modalClose : true
+    });
 
 return false;
 
@@ -72,6 +75,13 @@ return false;
     });
 
     console.log("신청 ", selDate);
+  }
+
+
+  handleModalClose(){
+    this.setState({
+      modalClose : false
+    })
   }
 
     render() {
@@ -108,21 +118,12 @@ return false;
 
                   <button className="ui button" type="button" onClick={this.handleClick}>식권신청</button>
 
-                    <Modal show={this.state.mhide}>
-                          <Modal.Header>
-                            <Modal.Title>Modal title</Modal.Title>
-                          </Modal.Header>
-
-                          <Modal.Body>
-                            One fine body...
-                          </Modal.Body>
-
-                          <Modal.Footer>
-                            <Button onClick={this.onHide}>Close</Button>
-                            <Button bsStyle="primary">Save changes</Button>
-                          </Modal.Footer>
-
-                        </Modal>
+                  <AnbModal
+                    title="신청알림"
+                    message="식권신청을 하시겠습니까?"
+                    handleClose={this.handleModalClose}
+                    show={this.state.modalClose}
+                    />
 
                 </form>
 
