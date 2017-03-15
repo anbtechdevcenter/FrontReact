@@ -26,6 +26,7 @@ class Meal extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleHide= this.handleHide.bind(this);
+    this.handleOk = this.handleOk.bind(this);
     this.handleModalClose = this.handleModalClose.bind(this);
   }
 
@@ -84,6 +85,14 @@ return false;
     })
   }
 
+  handleOk(){
+    this.setState({
+      modalClose : true
+    });
+  }
+
+
+
     render() {
         return(
             <div>
@@ -121,6 +130,7 @@ return false;
                   <AnbModal
                     title="신청알림"
                     message="식권신청을 하시겠습니까?"
+                    handleOk={this.handleOk}
                     handleClose={this.handleModalClose}
                     show={this.state.modalClose}
                     />

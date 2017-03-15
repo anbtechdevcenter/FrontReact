@@ -28,7 +28,7 @@ class Login extends Component {
               <div className="field">
                 <div className="ui segment">
                   <p>
-                    SKHynix에서 상주하는 에이앤비테크 직원의 원할한 신권 신청을 위해 만들어진 App입니다.<br/>
+                    SKHynix에서 상주하는 에이앤비테크 직원의 원할한 식권 신청을 위해 만들어진 App입니다.<br/>
                     사용상 불편사항 또는 건의사항은 의견주시면 적극 반영하도록 하겠습니다.
                   </p>
                 </div>

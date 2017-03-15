@@ -7,15 +7,11 @@ class AnbModal extends Component {
 
     constructor(props) {
         super(props);
-        this.handleClose = this.handleClose.bind(this);
     }
 
-    handleClose(){
-      console.log("click");
-    }
 
     render() {
-
+      
         return(
             <div>
 
@@ -29,8 +25,8 @@ class AnbModal extends Component {
                   </Modal.Body>
 
                   <Modal.Footer>
-                    <Button onClick={this.props.handleClose}>Close</Button>
-                    <Button bsStyle="primary">Save changes</Button>
+                    <Button bsStyle="primary" onClick={this.props.handleOk}>저장</Button>
+                    <Button onClick={this.props.handleClose}>닫기</Button>
                   </Modal.Footer>
 
                 </Modal>

@@ -16,9 +16,13 @@ class MealList extends Component {
         this.handleMealGet = this.handleMealGet.bind(this);
     }
 
+    componentDidMount(){
+      this.handleMealGet();
+    }
+
     handleMealGet(){
       AnbUtil.REST({type : "R", url : "/meal" }, (res)=>{
-        console.log("[mealGet] ", res);
+        //console.log("[mealGet] ", res);
         this.setState({
           mealList : res
         });
@@ -26,6 +30,8 @@ class MealList extends Component {
     }
 
     render() {
+
+
 
       let mealListDisp = this.state.mealList.filter(
         (meal) =>  meal//contact.boardTitle.indexOf(this.props.filterText) !== -1
@@ -40,7 +46,17 @@ class MealList extends Component {
                   <button className="ui button" type="button" onClick={this.handleMealGet}>조회</button>
                 </form>
 
-                <div className="ui relaxed divided list">
+                <table className="ui olive table">
+                  <thead>
+                    <tr>
+                      <th>신청자</th>
+                      <th>신청매수</th>
+                      <th>신청일자</th>
+                      <th>수령일자</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
                 {
                   mealListDisp.map(
                     (meal, i) => <MealDetailList key={meal.seqMeal}
@@ -51,7 +67,8 @@ class MealList extends Component {
                                             />
                   )
                 }
-                </div>
+                </tbody>
+              </table>
 
 
             </div>

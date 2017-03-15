@@ -19,18 +19,14 @@ class MeanDetailList extends Component {
 
 
         return(
-            <div>
 
+              <tr>
+                  <td>{this.props.userInfo}</td>
+                  <td>{this.props.applyQty}</td>
+                  <td>{this.props.applyDate}</td>
+                  <td>{this.props.fixedDate}</td>
+              </tr>
 
-              <div className="item">
-                <i className="large github middle aligned icon"></i>
-                <div className="content">
-                  <a className="header">{this.props.userInfo} / {this.props.applyQty}매</a>
-                  <div className="description">신청일자 : {this.props.applyDate} / 수령일자 : {this.props.fixedDate}</div>
-                </div>
-              </div>
-
-            </div>
         );
     }
 }
