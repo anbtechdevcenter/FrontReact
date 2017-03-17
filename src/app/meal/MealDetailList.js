@@ -19,13 +19,17 @@ class MeanDetailList extends Component {
 
 
         return(
+<div className="ui celled list">
 
-              <tr>
-                  <td>{this.props.userInfo}</td>
-                  <td>{this.props.applyQty}</td>
-                  <td>{this.props.applyDate}</td>
-                  <td>{this.props.fixedDate}</td>
-              </tr>
+          <div className="item">
+            <div className="list">
+              <div class="item">  {this.props.userInfo} </div>
+              <div class="item">  {this.props.applyQty} </div>
+              <div class="item">  {this.props.applyDate}  </div>
+              <div class="item">  {this.props.fixedDate}  </div>
+            </div>
+          </div>
+</div>
 
         );
     }
