@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import {AnbUtil} from '../../components';
-
+import { Dimmer, Loader } from 'semantic-ui-react';
 import MealDetailList from './MealDetailList';
 
 class MealList extends Component {
@@ -17,14 +17,19 @@ class MealList extends Component {
     }
 
     componentDidMount(){
+
       this.handleMealGet();
     }
 
     handleMealGet(){
+      this.setState({
+        active : true
+      });
       AnbUtil.REST({type : "R", url : "/meal" }, (res)=>{
         //console.log("[mealGet] ", res);
         this.setState({
-          mealList : res
+          mealList : res,
+          active : false
         });
       });
     }
@@ -39,24 +44,15 @@ class MealList extends Component {
 
         return(
             <div>
-                <h2 className="ui header">개인 식권 신청현황</h2>
 
+              <Dimmer active={this.state.active} size={'massive'}>
+                <Loader />
+              </Dimmer>
 
                 <form className="ui form">
                   <button className="ui button" type="button" onClick={this.handleMealGet}>조회</button>
                 </form>
 
-                <table className="ui olive table">
-                  <thead>
-                    <tr>
-                      <th>신청자</th>
-                      <th>신청매수</th>
-                      <th>신청일자</th>
-                      <th>수령일자</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
                 {
                   mealListDisp.map(
                     (meal, i) => <MealDetailList key={meal.seqMeal}
@@ -67,9 +63,6 @@ class MealList extends Component {
                                             />
                   )
                 }
-                </tbody>
-              </table>
-
 
             </div>
         );
