@@ -45,13 +45,20 @@ class Meal extends Component {
  }
 
   handleClick(){
-
     this.setState({
       modalClose : true
     });
+  }
 
-return false;
 
+  handleModalClose(){
+    this.setState({
+      modalClose : false
+    })
+  }
+
+  /*식권신청 오케이*/
+  handleOk(){
     var selDate = this.state.startDate.format();
 
     var meal = {
@@ -72,23 +79,14 @@ return false;
     var obj = { 'type' : 'C', 'url':'/meal', 'param': JSON.stringify(meal)};
     AnbUtil.REST(obj, (res)=>{
       //console.log("save");
-      //this.handleFind();
+      this.setState({
+        modalClose : false
+      });
     });
 
-    console.log("신청 ", selDate);
-  }
 
 
-  handleModalClose(){
-    this.setState({
-      modalClose : false
-    })
-  }
 
-  handleOk(){
-    this.setState({
-      modalClose : true
-    });
   }
 
 
