@@ -27,6 +27,10 @@ class MealList extends Component {
       });
       AnbUtil.REST({type : "R", url : "/meal" }, (res)=>{
         //console.log("[mealGet] ", res);
+        res.sort(function(a,b){
+          return a.applyDate > b.applyDate ? -1 : a.applyDate < b.applyDate ?1 : 0;
+        });
+
         this.setState({
           mealList : res,
           active : false
@@ -50,7 +54,7 @@ class MealList extends Component {
               </Dimmer>
 
                 <form className="ui form">
-                  <button className="ui button" type="button" onClick={this.handleMealGet}>조회</button>
+                  <button className="ui primary button" type="button" onClick={this.handleMealGet}>조회</button>
                 </form>
 
                 {

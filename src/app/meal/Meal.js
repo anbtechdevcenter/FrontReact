@@ -85,10 +85,7 @@ class Meal extends Component {
     });
 
 
-
-
   }
-
 
 
     render() {
@@ -98,12 +95,7 @@ class Meal extends Component {
                 <form className="ui form">
                   <div className="field">
                     <label>프로젝트명</label>
-                    <select multiple="" className="ui dropdown">
-                      <option value="SM">SM</option>
-                      <option value="HIQ1">HiQOne Renewal</option>
-                      <option value="HESS">Hess</option>
-                      <option value="DESIGN">Design</option>
-                    </select>
+                    <input type="text" name="prjId" readOnly="readonly" placeholder="프로젝트명" />
                   </div>
                   <div className="field">
                     <label>신청일자</label>

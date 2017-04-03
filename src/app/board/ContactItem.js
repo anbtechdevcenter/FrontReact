@@ -12,7 +12,7 @@ export default  class ContactItem extends Component {
             <input type="checkbox" onChange={this.props.onChange} value={this.props.dataKey}/>
           </td>
           <td>{this.props.boardTitle} </td>
-          <td>{this.props.boardContents}</td>
+          <td className="right aligned">{this.props.boardContents}</td>
       </tr>
 
     );

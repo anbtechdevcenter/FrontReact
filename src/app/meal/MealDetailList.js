@@ -23,10 +23,10 @@ class MeanDetailList extends Component {
 
           <div className="item">
             <div className="list">
-              <div className="item">  {this.props.userInfo} </div>
-              <div className="item">  {this.props.applyQty} </div>
-              <div className="item">  {this.props.applyDate}  </div>
-              <div className="item">  {this.props.fixedDate}  </div>
+              <div className="item"> <label>신청자명 : </label> {this.props.userInfo} </div>
+              <div className="item"> <label>신청수량 : </label> {this.props.applyQty} </div>
+              <div className="item"> <label>신청일자 : </label> {this.props.applyDate}  </div>
+              <div className="item"> <label>수령일자 : </label> {this.props.fixedDate}  </div>
             </div>
           </div>
 </div>

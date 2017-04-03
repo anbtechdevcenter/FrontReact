@@ -4,7 +4,7 @@ import axios from 'axios';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-const API_URL = "http://api.anbtech.net/api";
+const API_URL = "http://restnfeel.com:8080/api";
 
 const propTypes = {
  datas : PropTypes.array,
@@ -55,6 +55,12 @@ class AnbSelect extends Component {
             valueCd ='boardType';
             textCd = 'boardTypeNm';
             sortingCd = 'boardTypeNm';
+            break;
+          case 'project':
+            url = API_URL+'/project';
+            valueCd ='prjId';
+            textCd = 'prjNm';
+            sortingCd = 'prjNm';
             break;
           default:
 

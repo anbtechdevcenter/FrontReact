@@ -13,7 +13,7 @@ export default class ContactList extends Component {
 
 
 
-      <table className="ui olive table">
+      <table className="ui celled striped table">
         <thead>
           <tr>
             <th>Header</th>
