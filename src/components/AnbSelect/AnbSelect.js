@@ -1,10 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import axios from 'axios';
-
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-
-const API_URL = "http://restnfeel.com:8080/api";
+import AnbUtil from '../AnbUtil';
 
 const propTypes = {
  datas : PropTypes.array,
@@ -45,19 +40,19 @@ class AnbSelect extends Component {
 
         switch (dataType) {
           case 'rank':
-            url = API_URL+'/rank';
+            url = '/rank';
             valueCd ='rankCode';
             textCd = 'rankName';
             sortingCd = 'rankOrder';
             break;
           case 'board':
-            url = API_URL+'/boardType';
+            url = '/boardType';
             valueCd ='boardType';
             textCd = 'boardTypeNm';
             sortingCd = 'boardTypeNm';
             break;
           case 'project':
-            url = API_URL+'/project';
+            url = '/project';
             valueCd ='prjId';
             textCd = 'prjNm';
             sortingCd = 'prjNm';
@@ -66,25 +61,24 @@ class AnbSelect extends Component {
 
         }
 
-
-          axios.get(url)
-          .then(response => {
-           //console.log(response.data);
-            let rData = response.data;
-            this.setState({
-              datas : rData,
-              valueCd : valueCd,
-              textCd : textCd,
-              sortingCd : sortingCd
-            });
+        AnbUtil.REST( {'type' : 'R', 'url' : url}, (response)=>{
+          let rData = response;
+          this.setState({
+            datas : rData,
+            valueCd : valueCd,
+            textCd : textCd,
+            sortingCd : sortingCd
           });
+        });
+
       };
 
        getApiData();
 
    }
 
- handleChange = (event, index, value) => {
+ handleChange = (event) => {
+   let value = event.target.value;
    this.props.onChange(value);
    this.setState({
      rankValue : value
@@ -113,10 +107,11 @@ class AnbSelect extends Component {
             //     key={i} rankCode={selData[vCode]}
             //     rankName={selData[tCode]} />
 
-                  <MenuItem key={i}
+                  <option key={i}
                    value={selData[vCode]}
-                   primaryText={selData[tCode]}
-                   />
+                   >
+                   {selData[tCode]}
+                 </option>
 
               );
             });
@@ -125,13 +120,11 @@ class AnbSelect extends Component {
 
         return(
             <div>
-              <SelectField
-                floatingLabelText={this.props.label}
-                value={this.state.rankValue}
+              <select className="ui dropdown"
                 onChange={this.handleChange}
                 >
-               {mapToComponent(this.state.datas)}
-              </SelectField>
+                  {mapToComponent(this.state.datas)}
+                </select>
             </div>
         );
     }

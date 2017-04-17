@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
-import {AnbUtil, AnbModal} from '../../components';
+import {AnbUtil, AnbModal, AnbSelect} from '../../components';
 
 const propTypes = {
   member : PropTypes.array
@@ -18,7 +18,8 @@ class Meal extends Component {
     super(props);
     this.state= {
       startDate : moment(),
-      modalClose : false
+      modalClose : false,
+      projectList : []
     }
 
     moment.locale('ko');
@@ -28,6 +29,7 @@ class Meal extends Component {
     this.handleHide= this.handleHide.bind(this);
     this.handleOk = this.handleOk.bind(this);
     this.handleModalClose = this.handleModalClose.bind(this);
+    this.handleSelectChange = this.handleSelectChange.bind(this);
   }
 
   handleChange(date) {
@@ -87,15 +89,23 @@ class Meal extends Component {
 
   }
 
+ handleSelectChange(data) {
+   console.log("[seldata] ", data);
+ }
+
+
 
     render() {
+
+
         return(
             <div>
 
                 <form className="ui form">
                   <div className="field">
                     <label>프로젝트명</label>
-                    <input type="text" name="prjId" readOnly="readonly" placeholder="프로젝트명" />
+                    <AnbSelect dataType="project"
+                        onChange={this.handleSelectChange}/>
                   </div>
                   <div className="field">
                     <label>신청일자</label>
