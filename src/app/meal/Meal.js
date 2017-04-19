@@ -30,6 +30,19 @@ class Meal extends Component {
     this.handleOk = this.handleOk.bind(this);
     this.handleModalClose = this.handleModalClose.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.handleOnLoad = this.handleOnLoad.bind(this);
+
+
+  }
+
+  handleOnLoad(){
+    //console.log("on load ");
+    AnbUtil.REST({"type": "R", "url" : "/employee"}, (res)=> {
+      var user = res.filter(function(item){
+        return item.empId  == "EMP_201703092230";
+      })
+      console.log("[emp] ", user);
+    });
   }
 
   handleChange(date) {
@@ -97,6 +110,7 @@ class Meal extends Component {
 
     render() {
 
+      this.handleOnLoad();
 
         return(
             <div>
