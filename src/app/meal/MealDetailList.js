@@ -1,7 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 
 const propTypes = {
-
+  userInfo : PropTypes.string,
+  applyQty : PropTypes.number,
+  applyDate : PropTypes.string,
+  fixedDate : PropTypes.string
 };
 
 const defaultProps = {
@@ -10,9 +13,7 @@ const defaultProps = {
 
 class MeanDetailList extends Component {
 
-    constructor(props) {
-        super(props);
-    }
+  
 
     render() {
 

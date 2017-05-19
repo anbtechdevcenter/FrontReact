@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {AnbUtil} from '../../components';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import MealDetailList from './MealDetailList';
+import { Form } from 'semantic-ui-react';
 
 class MealList extends Component {
 
@@ -46,6 +47,11 @@ class MealList extends Component {
         (meal) =>  meal//contact.boardTitle.indexOf(this.props.filterText) !== -1
       );
 
+      let options = [
+        {key : '1', text:'1월', value : '1'},
+        {key : '2', text:'2월', value : '2'}
+      ];
+
         return(
             <div>
 
@@ -54,8 +60,19 @@ class MealList extends Component {
               </Dimmer>
 
                 <form className="ui form">
-                  <button className="ui primary button" type="button" onClick={this.handleMealGet}>조회</button>
-                </form>
+
+                  <div className="field">
+                    <Form.Select label="수령월 선택"
+                      options={options}
+                      placeholder="조회하려는 월을 선택하세요!"/>
+                  </div>
+
+
+                  <button className="ui primary button" type="button"
+                    onClick={this.handleMealGet}>조회</button>
+
+              </form>
+
 
                 {
                   mealListDisp.map(

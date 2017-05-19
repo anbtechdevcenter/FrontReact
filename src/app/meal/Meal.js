@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import {Button} from 'react-onsenui';
+import { Accordion } from 'semantic-ui-react';
 
 import {AnbUtil, AnbModal, AnbSelect} from '../../components';
 
@@ -19,7 +21,8 @@ class Meal extends Component {
     this.state= {
       startDate : moment(),
       modalClose : false,
-      projectList : []
+      projectList : [],
+      prjId :"ANB_201703262043036"
     }
 
     moment.locale('ko');
@@ -98,6 +101,7 @@ class Meal extends Component {
     render() {
 
 
+
         return(
             <div>
 
@@ -112,6 +116,7 @@ class Meal extends Component {
                     <DatePicker
                       className="field ui input"
                       dateFormat="YYYY-MM-DD"
+                      locale="ko-gb"
                         selected={this.state.startDate}
                         onChange={this.handleChange} />
                   </div>
@@ -125,7 +130,7 @@ class Meal extends Component {
                     <input type="text" name="getdate" readOnly="readonly" placeholder="기본 20매" value="20"/>
                   </div>
 
-                  <button className="ui button" type="button" onClick={this.handleClick}>식권신청</button>
+                  <Button modifier="large" onClick={this.handleClick}>식권신청</Button>
 
                   <AnbModal
                     title="신청알림"

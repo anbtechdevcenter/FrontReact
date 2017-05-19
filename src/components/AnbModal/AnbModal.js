@@ -1,17 +1,11 @@
-import React, { Component, PropTypes } from 'react';
-
-
+import React, { Component } from 'react';
 import {Modal,Button} from 'react-bootstrap';
 
 class AnbModal extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
 
     render() {
-      
+
         return(
             <div>
 

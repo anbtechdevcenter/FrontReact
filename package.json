@@ -5,6 +5,8 @@
   "private": true,
   "devDependencies": {
     "bootstrap-select": "^1.12.1",
+    "onsenui": "^2.2.5",
+    "react-onsenui": "^1.2.0",
     "react-scripts": "0.8.4"
   },
   "dependencies": {
